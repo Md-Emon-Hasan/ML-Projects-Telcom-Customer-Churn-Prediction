@@ -1,0 +1,110 @@
+body {
+    background-image: url('https://images.pexels.com/photos/3944405/pexels-photo-3944405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+.container {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 15px;
+    margin-top: 100px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 2s ease-in-out;
+}
+h1, h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    animation: slideIn 1s ease-in-out;
+}
+h2 {
+    margin-top: 30px;
+    color: #ffd700;
+}
+label {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+select, input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+select:focus, input:focus {
+    border-color: #28a745;
+    outline: none;
+}
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #218838;
+}
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 5px;
+    /* position: fixed; */
+    width: 100%;
+    bottom: 0;
+}
+.footer a {
+    color: #ffd700;
+    text-decoration: none;
+}
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-container {
+    border-radius: 15px;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.card {
+    margin: 10px 0;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 2s ease-in-out;
+}
+.card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    transition: 0.3s;
+}

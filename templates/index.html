@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telecom Customer Churn Prediction</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Telecom Customer Churn Prediction</h1>
+        <h2>Made By Emon Hasan</h2>
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="SeniorCitizen">Senior Citizen:</label>
+                <select id="SeniorCitizen" name="SeniorCitizen" required>
+                    <option value="0" {% if SeniorCitizen == 0 %}selected{% endif %}>No</option>
+                    <option value="1" {% if SeniorCitizen == 1 %}selected{% endif %}>Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Dependents">Dependents:</label>
+                <select id="Dependents" name="Dependents" required>
+                    <option value="0" {% if Dependents == 0 %}selected{% endif %}>No</option>
+                    <option value="1" {% if Dependents == 1 %}selected{% endif %}>Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Contract_MonthToMonth">Contract Month-to-Month:</label>
+                <select id="Contract_MonthToMonth" name="Contract_MonthToMonth" required>
+                    <option value="0" {% if Contract_MonthToMonth == 0 %}selected{% endif %}>No</option>
+                    <option value="1" {% if Contract_MonthToMonth == 1 %}selected{% endif %}>Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Contract_One_year">Contract One Year:</label>
+                <select id="Contract_One_year" name="Contract_One_year" required>
+                    <option value="0" {% if Contract_One_year == 0 %}selected{% endif %}>No</option>
+                    <option value="1" {% if Contract_One_year == 1 %}selected{% endif %}>Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Contract_Two_year">Contract Two Year:</label>
+                <select id="Contract_Two_year" name="Contract_Two_year" required>
+                    <option value="0" {% if Contract_Two_year == 0 %}selected{% endif %}>No</option>
+                    <option value="1" {% if Contract_Two_year == 1 %}selected{% endif %}>Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tenure_bin_New">Tenure New:</label>
+                <select id="tenure_bin_New" name="tenure_bin_New" required>
+                    <option value="0" {% if tenure_bin_New == 0 %}selected{% endif %}>No</option>
+                    <option value="1" {% if tenure_bin_New == 1 %}selected{% endif %}>Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tenure_bin_Mid">Tenure Mid:</label>
+                <select id="tenure_bin_Mid" name="tenure_bin_Mid" required>
+                    <option value="0" {% if tenure_bin_Mid == 0 %}selected{% endif %}>No</option>
+                    <option value="1" {% if tenure_bin_Mid == 1 %}selected{% endif %}>Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tenure_bin_Long">Tenure Long:</label>
+                <select id="tenure_bin_Long" name="tenure_bin_Long" required>
+                    <option value="0" {% if tenure_bin_Long == 0 %}selected{% endif %}>No</option>
+                    <option value="1" {% if tenure_bin_Long == 1 %}selected{% endif %}>Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="InternetService_Fiber_optic">Internet Service Fiber Optic:</label>
+                <select id="InternetService_Fiber_optic" name="InternetService_Fiber_optic" required>
+                    <option value="0" {% if InternetService_Fiber_optic == 0 %}selected{% endif %}>No</option>
+                    <option value="1" {% if InternetService_Fiber_optic == 1 %}selected{% endif %}>Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="OnlineSecurity">Online Security:</label>
+                <select id="OnlineSecurity" name="OnlineSecurity" required>
+                    <option value="0" {% if OnlineSecurity == 0 %}selected{% endif %}>No</option>
+                    <option value="1" {% if OnlineSecurity == 1 %}selected{% endif %}>Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="TechSupport">Tech Support:</label>
+                <select id="TechSupport" name="TechSupport" required>
+                    <option value="0" {% if TechSupport == 0 %}selected{% endif %}>No</option>
+                    <option value="1" {% if TechSupport == 1 %}selected{% endif %}>Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="PaymentMethod_Electronic_check">Payment Method Electronic Check:</label>
+                <select id="PaymentMethod_Electronic_check" name="PaymentMethod_Electronic_check" required>
+                    <option value="0" {% if PaymentMethod_Electronic_check == 0 %}selected{% endif %}>No</option>
+                    <option value="1" {% if PaymentMethod_Electronic_check == 1 %}selected{% endif %}>Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="PaperlessBilling">Paperless Billing:</label>
+                <select id="PaperlessBilling" name="PaperlessBilling" required>
+                    <option value="0" {% if PaperlessBilling == 0 %}selected{% endif %}>No</option>
+                    <option value="1" {% if PaperlessBilling == 1 %}selected{% endif %}>Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="MonthlyCharges">Monthly Charges:</label>
+                <input type="number" step="0.01" id="MonthlyCharges" name="MonthlyCharges" value="{{ MonthlyCharges or '' }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="TotalCharges">Total Charges:</label>
+                <input type="number" step="0.01" id="TotalCharges" name="TotalCharges" value="{{ TotalCharges or '' }}" required>
+            </div>
+
+            <button type="submit" class="btn-style">Predict Churn</button>
+        </form>
+
+        {% if predict_churn is defined %}
+            <h2>Prediction Result: {{ 'Churn' if predict_churn[0] == 1 else 'No Churn' }}</h2>
+        {% endif %}
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 <a href="https://github.com/md-emon-hasan" target="_blank">Md Emon Hasan</a>. All rights reserved.</p>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
